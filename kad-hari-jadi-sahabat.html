@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <title>Kad Hari Jadi Sahabat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #fff0f5;
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      padding: 40px;
+      color: #ff66a3;
+    }
+
+    .kad {
+      background: white;
+      border-radius: 25px;
+      padding: 30px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .slide {
+      display: none;
+      font-size: 24px;
+      animation: fade 1s;
+    }
+
+    .active {
+      display: block;
+    }
+
+    @keyframes fade {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    .butang {
+      background-color: #ff99c8;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      margin: 15px 5px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .butang:hover {
+      background-color: #ff66a3;
+    }
+
+    .love {
+      font-size: 40px;
+      animation: float 2s ease-in-out infinite;
+      margin-top: 20px;
+    }
+
+    .emoji {
+      font-size: 35px;
+      margin-top: 15px;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0); }
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-family: 'Pacifico', cursive;
+      font-size: 18px;
+      width: 70%;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Tulis nama sahabat kamu:</h2>
+  <input type="text" id="namaInput" placeholder="Nama sahabat istimewa..." oninput="kemaskiniNama()">
+
+  <div class="kad">
+    <div class="slide active" id="slide1">Selamat Hari Jadi, <span id="nama1">...</span>!</div>
+    <div class="slide">Semoga persahabatan kita kekal selamanya <span class="emoji">✨</span></div>
+    <div class="slide">Terima kasih kerana sentiasa ada <span class="emoji">🧸</span></div>
+    <div class="slide">Kamu sahabat yang sangat bermakna dalam hidupku <span class="emoji">🌸</span></div>
+    <div class="slide">Moga segala impianmu tercapai tahun ini! <span class="emoji">❤️</span></div>
+
+    <div class="love">♥</div>
+
+    <button class="butang" onclick="sebelum()">Sebelumnya</button>
+    <button class="butang" onclick="seterusnya()">Seterusnya</button>
+  </div>
+
+  <!-- Muzik latar -->
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mp3">
+    Browser anda tidak menyokong audio.
+  </audio>
+
+  <script>
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName("slide");
+
+    function paparkanSlide(index) {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active");
+      }
+      slides[index].classList.add("active");
+    }
+
+    function seterusnya() {
+      slideIndex = (slideIndex + 1) % slides.length;
+      paparkanSlide(slideIndex);
+    }
+
+    function sebelum() {
+      slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+      paparkanSlide(slideIndex);
+    }
+
+    function kemaskiniNama() {
+      const nama = document.getElementById("namaInput").value;
+      document.getElementById("nama1").innerText = nama || "...";
+    }
+  </script>
+
+</body>
+</html>
